@@ -297,18 +297,21 @@
     // Protect the admin page
 
     const loggedIn =
-        sessionStorage.getItem("capsule_logged_in");
+    sessionStorage.getItem("capsule_logged_in");
 
-    const role =
-        sessionStorage.getItem("capsule_role");
+const role =
+    sessionStorage.getItem("capsule_role");
 
+if (loggedIn !== "true" || role !== "admin") {
+    window.location.href = "login.html";
+}
 
-    if (loggedIn !== "true" || role !== "admin") {
+function logout() {
+    sessionStorage.removeItem("capsule_logged_in");
+    sessionStorage.removeItem("capsule_role");
 
-        window.location.href = "login.html";
-
-    }
-
+    window.location.href = "login.html";
+}
 
     function logout() {
 
