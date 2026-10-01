@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Capsule</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #0b1f3a;
+            color: white;
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logout {
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+        }
+
+        .welcome {
+            color: #667085;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .card-title {
+            color: #667085;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: 700;
+            color: #0b1f3a;
+        }
+
+        .modules {
+            margin-top: 30px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .module {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #eaecf0;
+        }
+
+        .module h3 {
+            margin-bottom: 8px;
+        }
+
+        .module p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        @media(max-width: 800px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modules {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width: 500px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+        Capsule Admin Panel
+    </div>
+
+    <button class="logout" onclick="logout()">
+        Logout
+    </button>
+
+</header>
+
+
+<main class="container">
+
+    <h1>Dashboard</h1>
+
+    <p class="welcome">
+        Welcome to Capsule Educational Institute Management System.
+    </p>
+
+
+    <section class="cards">
+
+        <div class="card">
+
+            <div class="card-title">
+                Total Staff
+            </div>
+
+            <div class="number">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                Total Leads
+            </div>
+
+            <div class="number">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                Admissions
+            </div>
+
+            <div class="number">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                Payments
+            </div>
+
+            <div class="number">
+                AED 0
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="modules">
+
+        <div class="module">
+
+            <h3>Staff Management</h3>
+
+            <p>
+                Manage Capsule staff accounts, roles,
+                salaries and commissions.
+            </p>
+
+        </div>
+
+
+        <div class="module">
+
+            <h3>Leads & CRM</h3>
+
+            <p>
+                Manage student leads, follow-ups,
+                counsellors and lead status.
+            </p>
+
+        </div>
+
+
+        <div class="module">
+
+            <h3>Admissions</h3>
+
+            <p>
+                Manage student admissions,
+                programmes and documents.
+            </p>
+
+        </div>
+
+
+        <div class="module">
+
+            <h3>Payments</h3>
+
+            <p>
+                Track student fees, payments,
+                balances and receipts.
+            </p>
+
+        </div>
+
+
+        <div class="module">
+
+            <h3>Attendance</h3>
+
+            <p>
+                Monitor staff attendance,
+                working hours and late records.
+            </p>
+
+        </div>
+
+
+        <div class="module">
+
+            <h3>Reports</h3>
+
+            <p>
+                View business and academic
+                management reports.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+    // Protect the admin page
+
+    const loggedIn =
+        sessionStorage.getItem("capsule_logged_in");
+
+    const role =
+        sessionStorage.getItem("capsule_role");
+
+
+    if (loggedIn !== "true" || role !== "admin") {
+
+        window.location.href = "login.html";
+
+    }
+
+
+    function logout() {
+
+        sessionStorage.removeItem("capsule_logged_in");
+        sessionStorage.removeItem("capsule_role");
+
+        window.location.href = "login.html";
+
+    }
+
+</script>
+
+</body>
+
+</html>
